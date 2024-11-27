@@ -72,6 +72,7 @@ namespace CarRentalSystem.Controllers
         }
 
         // POST /cars/book
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("book")]
         public async Task<IActionResult> BookCar([FromBody] BookingRequest bookingRequest)
         {

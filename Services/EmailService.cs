@@ -9,13 +9,13 @@ namespace CarRentalSystem.Services
     {
         private readonly string _sendGridApiKey;
 
-        public EmailService(IConfiguration configuration)
+        public EmailService(string configuration)
         {
-            _sendGridApiKey = Environment.GetEnvironmentVariable("SEND_GRID_API_KEY") ??
-                              configuration["SendGrid:ApiKey"];
+            _sendGridApiKey = configuration;
+            
             if (string.IsNullOrEmpty(_sendGridApiKey))
             {
-                throw new Exception("SendGrid API key is not set.");
+                throw new Exception("SendGrid API key is not set." + configuration);
             }
         }
 

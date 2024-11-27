@@ -17,6 +17,7 @@ namespace CarRentalSystem.Repositories
         public void AddCar(Car car)
         {
             _context.Cars.Add(car);
+            _context.SaveChanges();
         }
 
         public Car GetCarById(Guid carId)

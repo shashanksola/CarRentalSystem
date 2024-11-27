@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +75,10 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+
+builder.Services.AddTransient<EmailService>(provider => new EmailService(
+    builder.Configuration["SendGrid:ApiKey"]
+));
 
 var app = builder.Build();
 
