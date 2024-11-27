@@ -84,7 +84,7 @@ This is a RESTful API for a car rental system, built using ASP.NET Core 8. The s
 ## **Authentication**
 
 ### **Login and Obtain JWT Token**
-- **Endpoint**: `POST /api/Users/authenticate`
+- **Endpoint**: `POST /api/Users/login`
 - **Payload**:
   ```json
   {
@@ -113,7 +113,7 @@ Authorization: Bearer your-jwt-token
 | Method | Endpoint               | Description                 | Roles Allowed |
 |--------|------------------------|-----------------------------|---------------|
 | POST   | `/api/Users/register`  | Register a new user         | All (Should be updated so that only admin can register another admin)         |
-| POST   | `/api/Users/authenticate` | Authenticate and get token | All           |
+| POST   | `/api/Users/login` | Authenticate and get token | All           |
 
 ### **Car Endpoints**
 | Method | Endpoint       | Description              | Roles Allowed |
@@ -151,6 +151,9 @@ Authorization: Bearer your-jwt-token
 "ConnectionStrings": {
   "DefaultConnection": "Your SQL Server connection string"
 },
+"SendGrid": {
+   "ApiKey": "yor_api_key_here"
+}
 ```
 
 ```bash
